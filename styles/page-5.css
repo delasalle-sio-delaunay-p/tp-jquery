@@ -1,0 +1,226 @@
+/* */
+body {
+	font: 1em Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	
+	background:-moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+	background:-webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+	background:linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+html {
+	height: 100%;
+}
+
+#titre {
+	width: 600px;
+	margin: 20px auto;
+	padding: 5px;
+	text-align: center;
+	
+	background:#eee;
+	border: 1px solid #fff;
+	
+	-moz-box-shadow: 0px 2px 15px #333;
+	-webkit-box-shadow: 0px 2px 15px #333;
+	-o-box-shadow: 0px 2px 15px #333;
+	box-shadow: 0px 2px 15px #333;
+}
+
+/*------------------------------ style de la barre de boutons -----------------*/
+
+#barre-boutons{
+	text-align: center;
+	margin: 20px auto;
+}
+
+#barre-boutons li {
+	list-style: none;
+	padding: 5px;
+	display: inline-block;
+}
+
+#barre-boutons button {
+	padding: 4px 15px;
+	font-size: 1.1em;
+	font-weight: bold;
+	vertical-align: middle;
+	cursor: pointer;
+	border-radius: 4px;
+	
+	background: #eee;
+	border: 1px solid #fff;
+	
+	-moz-box-shadow: 0px 2px 15px #333;
+	-webkit-box-shadow: 0px 2px 15px #333;
+	-o-box-shadow: 0px 2px 15px #333;
+	box-shadow: 0px 2px 15px #333;
+}
+
+
+
+
+#libelle-photo {
+	width: 350px;
+	padding: 3px;
+	cursor: none;
+}
+
+/*------------------------------ styles liés au carousel et aux transformations 3D -----------------*/
+
+.scene3d{
+	width: 450px;
+	height: 300px;
+	position: relative;
+	margin: 30px auto;
+	
+	-webkit-perspective: 700px;
+	-moz-perspective: 700px;
+	-ms-perspective: 700px;
+	perspective: 700px;
+}
+
+#carrousel {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	
+	-webkit-transform: translateZ(-1150px);
+	-moz-transform: translateZ(-1150px);
+	-ms-transform: perspective(700px) translateZ(-1150px);
+	transform: translateZ(-1150px);
+	
+	-webkit-transition: -webkit-transform 0.6s;
+	-moz-transition: -moz-transform 0.6s;
+	-ms-transition: -ms-transform 0.6s;
+	transition: transform 0.6s;
+	
+}
+#carrousel img{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+	
+	background: #eee;
+	border: 1px solid #fff;
+	
+	-moz-box-shadow: 0px 2px 15px #333;
+	-webkit-box-shadow: 0px 2px 15px #333;
+	-o-box-shadow: 0px 2px 15px #333;
+	box-shadow: 0px 2px 15px #333;
+	
+	transform-style: preserve-3d;
+}
+
+/* angle = 360 ° / 15 photos soit un angle de 24 ° entre 2 photos */
+#fig1 {
+	-webkit-transform: rotateY(0deg) translateZ(1150px);
+	-moz-transform: rotateY(0deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(0deg) translateZ(1150px);
+	transform: rotateY(0deg) translateZ(1150px);
+}
+
+#fig2{
+	-webkit-transform: rotateY(24deg) translateZ(1150px);
+	-moz-transform: rotateY(24deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(24deg) translateZ(1150px);
+	transform: rotateY(24deg) translateZ(1150px);	
+}
+
+#fig3{
+	-webkit-transform: rotateY(48deg) translateZ(1150px);
+	-moz-transform: rotateY(48deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(48deg) translateZ(1150px);
+	transform: rotateY(48deg) translateZ(1150px);	
+}
+
+#fig4{
+	-webkit-transform: rotateY(72deg) translateZ(1150px);
+	-moz-transform: rotateY(72deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(72deg) translateZ(1150px);
+	transform: rotateY(72deg) translateZ(1150px);	
+}
+
+#fig5{
+	-webkit-transform: rotateY(96deg) translateZ(1150px);
+	-moz-transform: rotateY(96deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(96deg) translateZ(1150px);
+	transform: rotateY(96deg) translateZ(1150px);	
+}
+
+#fig6{
+	-webkit-transform: rotateY(120deg) translateZ(1150px);
+	-moz-transform: rotateY(120deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(120deg) translateZ(1150px);
+	transform: rotateY(120deg) translateZ(1150px);	
+}
+
+#fig7{
+	-webkit-transform: rotateY(144deg) translateZ(1150px);
+	-moz-transform: rotateY(144deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(144deg) translateZ(1150px);
+	transform: rotateY(144deg) translateZ(1150px);	
+}
+
+#fig8{
+	-webkit-transform: rotateY(168deg) translateZ(1150px);
+	-moz-transform: rotateY(168deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(168deg) translateZ(1150px);
+	transform: rotateY(168deg) translateZ(1150px);	
+}
+
+#fig9{
+	-webkit-transform: rotateY(192deg) translateZ(1150px);
+	-moz-transform: rotateY(192deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(192deg) translateZ(1150px);
+	transform: rotateY(192deg) translateZ(1150px);	
+}
+
+#fig10{
+	-webkit-transform: rotateY(216deg) translateZ(1150px);
+	-moz-transform: rotateY(216deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(216deg) translateZ(1150px);
+	transform: rotateY(216deg) translateZ(1150px);	
+}
+
+#fig11{
+	-webkit-transform: rotateY(240deg) translateZ(1150px);
+	-moz-transform: rotateY(240deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(240deg) translateZ(1150px);
+	transform: rotateY(240deg) translateZ(1150px);	
+}
+
+#fig12{
+	-webkit-transform: rotateY(264deg) translateZ(1150px);
+	-moz-transform: rotateY(264deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(264deg) translateZ(1150px);
+	transform: rotateY(264deg) translateZ(1150px);	
+}
+
+#fig13{
+	-webkit-transform: rotateY(288deg) translateZ(1150px);
+	-moz-transform: rotateY(288deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(288deg) translateZ(1150px);
+	transform: rotateY(288deg) translateZ(1150px);	
+}
+
+#fig14{
+	-webkit-transform: rotateY(312deg) translateZ(1150px);
+	-moz-transform: rotateY(312deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(312deg) translateZ(1150px);
+	transform: rotateY(312deg) translateZ(1150px);	
+}
+
+#fig15{
+	-webkit-transform: rotateY(336deg) translateZ(1150px);
+	-moz-transform: rotateY(336deg) translateZ(1150px);
+	-ms-transform: perspective(700px) rotateY(336deg) translateZ(1150px);
+	transform: rotateY(336deg) translateZ(1150px);	
+}

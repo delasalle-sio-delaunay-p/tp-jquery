@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>TP JQuery 4 / Animation d'objets</title>
+		<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript">
+			// les variables déclarées ici ont une portée globale
+			var largeurJeu;	// largeur de la zone de déplacement
+			var hauteurJeu;	// hauteur de la zone de déplacement
+			var largeurSoucoupe; // largeur de l'image de la soucoupe
+			var hauteurSoucoupe; // hauteur de l'image de la soucoupe
+			var xSoucoupe; // position
+			var ySoucoupe;
+			var pasHorizontal = 10;
+			var pasVertical = 10;
+			var pasX;
+			var pasY;
+			
+			// qd le document sera prêt, il faudra appaler la fonction initialisations
+			$(document).ready(initialisations);
+			
+			function initialisations(){
+				
+				//LES DIMENSIONS DES OBJETS 
+				largeurJeu = $("#espace").css("width");
+				largeurJeu = parseInt(largeurJeu.substr(0,largeurJeu.indexOf("px")));
+				
+				hauteurJeu = $("#espace").css("height");
+				hauteurJeu = parseInt(hauteurJeu.substr(0,hauteurJeu.indexOf("px")));
+				
+				largeurSoucoupe = $("#soucoupe").css("width");
+				largeurSoucoupe = parseInt(largeurSoucoupe.substr(0,largeurSoucoupe.indexOf("px")));
+				
+				hauteurSoucoupe = $("#soucoupe").css("height");
+				hauteurSoucoupe = parseInt(hauteurSoucoupe.substr(0,hauteurSoucoupe.indexOf("px")));
+			
+				xSoucoupe = $("#soucoupe").css("margin-left");
+				xSoucoupe = parseInt(xSoucoupe.substr(0,xSoucoupe.indexOf("px")));
+				
+				ySoucoupe = $("#soucoupe").css("margin-top");
+				ySoucoupe = parseInt(ySoucoupe.substr(0,ySoucoupe.indexOf("px")));
+				
+				pasX = 0;
+				pasY = 0;
+				
+				// APPUIE SUR UNE TOUCHE
+				$(document).keydown(gestionKeydown);
+				var timer = setInterval("deplacement()", 20);
+			}
+			
+			function gestionKeydown(evenement){
+				if(evenement.which == 39){ // droite
+					pasX = pasHorizontal;
+					pasY = 0;
+				}
+				else if(evenement.which == 37){ // gauche
+					pasX = -pasHorizontal;
+					pasY = 0;
+				}
+				else if(evenement.which == 40){ // bas
+					pasY = pasVertical;
+					pasX = 0;
+				}
+				else if(evenement.which == 38){ // haut
+					pasY = -pasVertical;
+					pasX = 0;
+				}
+			}
+			
+			// gestion du déplacement de la soucoupe
+			// cette fonction est appelée périodiquement (toutes les 20 ms)
+			function deplacement(){
+				if (pasX > 0 && xSoucoupe < largeurJeu - largeurSoucoupe){
+					xSoucoupe += pasX;
+					$("#soucoupe").css("margin-left",xSoucoupe);
+				}
+				if (pasX < 0 && xSoucoupe > 0){
+					xSoucoupe += pasX;
+					$("#soucoupe").css("margin-left",xSoucoupe);
+				}
+				if (pasY > 0 && ySoucoupe < hauteurJeu - hauteurSoucoupe){
+					ySoucoupe += pasY;
+					$("#soucoupe").css("margin-top",ySoucoupe);
+				}
+				if (pasY < 0 && ySoucoupe > 0){
+					ySoucoupe += pasY;
+					$("#soucoupe").css("margin-top",ySoucoupe);
+				}
+			}
+		</script>
+		<style>
+			body{
+				background-color: black;
+				margin: 0px;
+				padding: 10px;
+			}
+			#espace{
+				background-image:url('../images/espace1.jpg');
+				width: 700px;
+				height: 437px;
+				border: 3px solid black;
+				margin: 30px auto;
+			}
+			#soucoupe{
+				position: relative; 
+				background-image: url('../images/soucoupe1.gif');
+				width: 100px;
+				height: 76px;
+				margin: 0px;
+		</style>
+		</head>
+	<body>
+		<div id="espace">
+			<div id="soucoupe"></div>
+		</div>
+	</body>
+</html>

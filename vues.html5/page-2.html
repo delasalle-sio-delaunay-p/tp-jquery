@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>TP JQuery 2 / Infobulles</title>
+		<style>
+			body{
+				margin: 0;
+				padding-left: 10px;
+				padding-right: 10px;
+				font: 90% Arial, Helvetica, sans-serif;
+			}
+			.lien{
+				text-decoration: none;
+				border-bottom: 1px dashed black;
+				color: black;
+			}
+			#infobulle{
+				position: absolute;
+				border: 1px solid black;
+				background: #9cf;
+				padding: 2px 5px;
+				display: none;
+			}
+		</style>
+		<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script>
+			// quand le document sera prêt, il faudra appeler la fonction initialisations
+			$(document).ready(initialisations);
+			
+			// création d'une fonction initialisations qui sera appelée lorsque le doc sera rdy
+			function initialisations () {
+				// réglage du décalage entre la position de l'infobulle et la positon du curseur
+				xOffset = 20;
+				yOffset = 10;
+				
+				// fonction appelée qd la souris arrive sur un lien <a> de classe "lien"
+				$("a.lien").mouseenter(entreeSourisSurLien);
+				
+				// fonction appelée qd la souris quitte un lien <a> de classe "lien"
+				$("a.lien").mouseleave(sortieSourisDuLien);
+				
+				// le survol d'un lien <a> de classe "lien" entraîne le déplacement de l'infobulle
+				$("a.lien").mousemove(deplacementSouris);
+				
+			}; // fin de la fct initialisations
+		
+			// fct appelée qd la souris arrive sur un lien
+			// le paramètre e (event) contient la position de la souris(e.pageX et e.pageY)
+			function entreeSourisSurLien(e) {
+			
+				// le mot "this" représente le lien <a> survolé par la souris
+				// recopie le contenu de l'attribut title du lien dans la variable texte				
+				this.texte = this.title;
+				// efface le contenu de l'attriut title du lien pr bloquer l'info-bulle de base
+				this.title = "";
+				// ajoute un paragraphe au corps/body de la page
+				$("body").append("<p id='infobulle'>" + this.texte + "</p>");
+				// positionne l'infobulle et la fait apparaître
+				$("#infobulle").css("top", (e.pageY - yOffset) + "px");
+				$("#infobulle").css("left", (e.pageX + xOffset) + "px");
+				$("#infobulle").fadeIn("fast");
+			};
+			
+			// fct appelée qd la souris quitte un lien
+			function sortieSourisDuLien() {
+				// restaure le contenu de l'attribut title du lien à partir de la variable texte
+				this.title = this.texte;
+				// supprime le paragraphe correspondant à l'infobulle
+				$("#infobulle").remove();
+				
+			}
+			
+			// fct appelée lors du déplacement de la souris sur un lien
+			function deplacementSouris (e) {
+				$("#infobulle").css("top", (e.pageY - yOffset) + "px");
+				$("#infobulle").css("left", (e.pageX - xOffset) + "px");					
+			}
+			
+		</script>
+	</head>
+	<body>
+		<p>jQuery est un framework
+		<a href="#" class="lien" title="Langage de scripts utilisé dans les pages web interactives">JavaScript</a>
+		libre qui porte sur l'interaction entre le HTML et le JavaScript (comprenant le
+		<a href="#" class="lien" title="Document Object Model">DOM</a>
+		et l'
+		<a href="#" class="lien" title="Asynchronous JavaScript And XML">AJAX</a>).</p>
+		<p><img alt="" src="../images/jquery-logo.gif"/></p>
+		<p>Source : <a href="#" class="lien" title="Encyclopédie universelle disponible sur le Web">Wikipedia</a></p>
+	</body>
+</html>
